@@ -1,8 +1,8 @@
 #ifndef insertion_sort
 #define insetrion_sort
 
-	template<typename T>
-void insertion_sort(T begin, T end)
+template<typename T>
+void insertion_sort (T begin, T end)
 {
 	for(int i=1; i<5; i++)
 	{
