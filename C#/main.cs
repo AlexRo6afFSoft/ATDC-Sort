@@ -1,3 +1,5 @@
 using System;
 
-static class Sort()
+static class Sort
+{
+}
