@@ -1,3 +1,26 @@
+#ifndef tim_sort
+#define tim_sort
+
+#include <iterator>
+#include <vector>
+#include <algorithm>
+
+template <typename T>
+void atdc_sort (std::iterator_traits <T>, std::iterator_traits <T>);
+
+template <typename T>
+void __atdc_sort (std::iterator_traits <T>, std::iterator_traits <T>);
+
+template <typename T>
+void __merge (std::iterator_traits <T>, std::iterator_traits <T>, std::iterator_traits <T>, std::iterator_traits <T>);
+
+#define atdcSort atdc_sort
+#define atdcsort atdc_sort
+#define AtdcSort atdc_sort
+#define Atdcsort atdc_sort
+#endif
+
+
 template <typename T>
 void __merge (std::iterator_traits <T> b1, std::iterator_traits <T> e1, std::iterator_traits <T> b2, std::iterator_traits <T> e2)
 {
@@ -29,7 +52,7 @@ void __atdc_sort (std::iterator_traits <T> Begin, std::iterator_traits <T> End)
 template <typename T>
 void atdc_sort (std::iterator_traits <T> Begin, std::iterator_traits <T> End)
 {
-	if (typeid (std::iterator_traits <T>::iterator_category) != typeid (std::random_access_iterator_tag))
+	if (std::iterator_traits <T>::iterator_category != std::random_access_iterator_tag())
 		throw std::invalid_argument ("Given iterator is not random access iterator");
 
 	__atdc_sort (Begin, End);
