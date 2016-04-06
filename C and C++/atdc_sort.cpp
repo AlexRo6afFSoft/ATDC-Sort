@@ -1,15 +1,15 @@
-#ifndef tim_sort
-#define tim_sort
+#ifndef atdc_sort
+#define atdc_sort
 
 #include <iterator>
 #include <vector>
 #include <algorithm>
 
 template <typename T>
-void atdc_sort (std::iterator_traits <T>, std::iterator_traits <T>);
+void atdc_sort (std::iterator_traits <T> Begin, std::iterator_traits <T> End);
 
 template <typename T>
-void __atdc_sort (std::iterator_traits <T>, std::iterator_traits <T>);
+void __atdc_sort (std::iterator_traits <T> Begin, std::iterator_traits <T>  End);
 
 template <typename T>
 void __merge (std::iterator_traits <T>, std::iterator_traits <T>, std::iterator_traits <T>, std::iterator_traits <T>);
