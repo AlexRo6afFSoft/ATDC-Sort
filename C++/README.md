@@ -1,4 +1,4 @@
-#ATDC Sorting Algorithm
+#ATDC Sorting Algorithm - C++ Implementation
 ##Usage 
 1. Add **_#include "atdc_sort.cpp"_**
 2. To sort add 
