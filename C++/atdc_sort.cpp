@@ -4,28 +4,21 @@
 #include <vector>
 #include <algorithm>
 #include <stdexcept>
-
-template <typename T>
-void atdc_sort (std::iterator_traits <T> Begin, std::iterator_traits <T> End);
-
-template <typename T>
-void __atdc_sort (std::iterator_traits <T> Begin, std::iterator_traits <T>  End);
-
-template <typename T>
-void __merge (std::iterator_traits <T>, std::iterator_traits <T>, std::iterator_traits <T>, std::iterator_traits <T>);
+#include <functional>
 
 #define atdcSort atdc_sort
 #define atdcsort atdc_sort
 #define AtdcSort atdc_sort
 #define Atdcsort atdc_sort
-#endif
 
-
-template <typename T, typename X>
-void __merge (std::iterator_traits <T> b1, std::iterator_traits <T> e1, std::iterator_traits <T> b2, std::iterator_traits <T> e2, X comp)
+template <typename RAI, typename X>
+void __merge (RAI b1, RAI e1, RAI b2, RAI e2, X comp)
 {
-	std::vector <T> arr;
-	std::iterator_traits <T> it1 = b1, it2 = b2;
+//	if (RAI::iterator_category != std::random_access_iterator_tag())
+//		throw std::invalid_argument ("Given iterator is not random access iterator");
+
+	std::vector <typename RAI::value_type> arr;
+	RAI it1 = b1, it2 = b2;
 	while (it1 != e1 and it2 != e2)
 	{
 		if (it1 == e1)
@@ -72,9 +65,12 @@ void __merge (std::iterator_traits <T> b1, std::iterator_traits <T> e1, std::ite
 	}
 }
 
-template <typename T, typename X = std::less<T> >
-void __atdc_sort (std::iterator_traits <T> Begin, std::iterator_traits <T> End, X comp)
+template <typename RAI, typename X = std::less<typename RAI::value_type> >
+void __atdc_sort (RAI Begin, RAI End, X comp)
 {
+////if (RAI::iterator_category != std::random_access_iterator_tag())
+////	throw std::invalid_argument ("Given iterator is not random access iterator");
+
 	int dist = std::distance (Begin, End);
 	if (dist == 0)
 		return ;
@@ -83,21 +79,22 @@ void __atdc_sort (std::iterator_traits <T> Begin, std::iterator_traits <T> End, 
 	if (dist == 2)
 	{
 		if (!comp (*Begin, *prev (End)))
-			swap (*Begin, *End);
+			std::iter_swap (Begin, prev (End));
 		return ;
 	}
 	dist /= 2;
-	std::iterator_traits <T> mid = Begin + dist;
-	__atdc_sort (Begin, mid);
-	__atdc_sort (mid, End);
+	RAI mid = Begin + dist;
+	__atdc_sort (Begin, mid, comp);
+	__atdc_sort (mid, End, comp);
 	__merge (Begin, mid, std::next (mid), End, comp);
 }
 
-template <typename T, typename X>
-void atdc_sort (std::iterator_traits <T> Begin, std::iterator_traits <T> End, X comp)
+template <typename RAI, typename X = std::less<typename RAI::value_type> >
+void atdc_sort (RAI Begin, RAI End, X comp = X())
 {
-	if (std::iterator_traits <T>::iterator_category != std::random_access_iterator_tag())
-		throw std::invalid_argument ("Given iterator is not random access iterator");
+////if (RAI::iterator_category != std::random_access_iterator_tag())
+////	throw std::invalid_argument ("Given iterator is not random access iterator");
 
 	__atdc_sort (Begin, End, comp);
 }
+#endif

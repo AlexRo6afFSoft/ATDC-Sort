@@ -1,7 +1,7 @@
 #include "atdc_sort.cpp"
 #include <iostream>
 #include <random>
-
+#include <vector>
 int main()
 {
 	/////////////////////////////////////////////////////////////////////
@@ -10,7 +10,7 @@ int main()
 	std::random_device rd;
 	std::mt19937 gen(rd());
 	std::uniform_int_distribution<> dis (-100, 100);
-	int* arr = new int [100];
+	std::vector <int> arr (100);
 	for(int i = 0 ; i < 100; i++)
 	{
 		arr[i] = dis (gen);
@@ -24,6 +24,7 @@ int main()
 	/////////////////////////////////////////////////////////////////////
 	/// Use atdc sort
 	/////////////////////////////////////////////////////////////////////
+	atdc_sort (std::begin (arr), std::end (arr));
 	
 	for(int i = 0 ; i < 100 ; i ++)
 	{
