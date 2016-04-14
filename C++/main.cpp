@@ -3,6 +3,7 @@
 #include <random>
 #include <vector>
 #include <algorithm>
+
 struct cmp1
 {
 	int operator () (int a, int b)
@@ -17,6 +18,7 @@ struct cmp2
 		return (a < b);
 	}
 };
+
 int main()
 {
 	/////////////////////////////////////////////////////////////////////
@@ -24,17 +26,19 @@ int main()
 	/////////////////////////////////////////////////////////////////////
 	std::random_device rd;
 	std::mt19937 gen(rd());
-	std::uniform_int_distribution<> dis (0, 100);
-	std::vector <int> arr (16);
-	std::vector <int> arr1 (16);
-	std::vector <int> arr2 (16);
-	for(int i = 0 ; i < 16; i++)
+	std::uniform_int_distribution<> dis (-100, 100);
+
+	std::vector <int> arr (25);
+	std::vector <int> arr1 (25);
+	std::vector <int> arr2 (25);
+
+	for(int i = 0 ; i < 25; i++)
 	{
 		arr  [i] = dis (gen);
 		arr1 [i] = arr [i];
 		arr2 [i] = arr [i];
 	}
-	for (int i = 0 ; i < 16 ; i ++)
+	for (int i = 0 ; i < 25 ; i ++)
 	{
 		std::cout << arr [i] << " ";
 	}
@@ -44,7 +48,7 @@ int main()
 	/// Use Standart Sort
 	////////////////////////////////////////////////////////////////////
 	std::sort (begin (arr1), end (arr1), cmp2 ());
-	for (int i = 0 ; i < 16 ; i ++)
+	for (int i = 0 ; i < 25 ; i ++)
 	{
 		std::cout << arr1 [i] << " ";
 	}
