@@ -21,7 +21,7 @@ void __merge (RAI b1, RAI e1, RAI b2, RAI e2, X comp)
 	//std::cout << "ALL1 is OK " << distance (b1, e1) << " & " << distance (b2, e2) << std::endl;
 	std::vector <typename RAI::value_type> __arr;
 	RAI it1 = b1, it2 = b2;
-	while (it1 != e1 and it2 != e2)
+	while (it1 != e1 && it2 != e2)
 	{
 		//std::cout << "Comp: " << comp (*it1, *it2) << std::endl;
 		if (comp (*it1, *it2) == 1)
