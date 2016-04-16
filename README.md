@@ -4,7 +4,6 @@
 
 ##*TODO:*<br>
 1. Write C Implementation<br>
-2. Write C# Implementation<br>
-3. Write Java Implamentation<br>
-4. Write JavaScript Implementation<br>
-5. Write Python Implementation<br>
+2. Write Java Implamentation<br>
+3. Write JavaScript Implementation<br>
+4. Write Python Implementation<br>
