@@ -1,0 +1,5 @@
+/home/alex/atdc_sort/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/home/alex/atdc_sort/bin/Debug/atdc_sort.exe.mdb
+/home/alex/atdc_sort/bin/Debug/atdc_sort.exe
+/home/alex/atdc_sort/obj/x86/Debug/atdc_sort.exe
+/home/alex/atdc_sort/obj/x86/Debug/atdc_sort.exe.mdb
