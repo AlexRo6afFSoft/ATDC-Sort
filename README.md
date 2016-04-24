@@ -5,5 +5,5 @@
 ##*TODO:*<br>
 1. Write C Implementation<br>
 2. Write Java Implamentation<br>
-3. Write JavaScript Implementation -> recursion to deep for all clients even for 3 elements<br>
+3. Fix JavaScript Implementation<br>
 4. Write Python Implementation<br>
