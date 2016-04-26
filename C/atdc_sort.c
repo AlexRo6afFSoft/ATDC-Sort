@@ -7,19 +7,20 @@
 #define AtdcSort atdc_sort
 #define Atdcsort atdc_sort
 
-void __merge (void * b1, void * e1, void * b2, void * e2, void * comp)
+void __merge (void * b1, void * e1, void * b2, void * e2, int (*comp) (void*, void*) )
 {
 	vector v;
 	vector_init(&v);
-	void * it1 = b1, it2 = b2;
+	void* it1 = b1;
+	void* it2 = b2;
 	while (it1 != e1 && it2 != e2)
 	{
-		if (comp (*it1, *it2) == 1)
+		if (comp (it1, it2) == 1)
 		{
 			__arr.push_back (*it1);
 			it1 ++;
 		}
-		else if (comp (*it1, *it2) == 2)
+		else if (comp (it1, it2) == 2)
 		{
 			__arr.push_back (*it2);
 			it2 ++;
@@ -58,7 +59,7 @@ void __merge (void * b1, void * e1, void * b2, void * e2, void * comp)
 	}
 }
 
-void __atdc_sort (void * Begin, void * End, void * comp)
+void __atdc_sort (void * Begin, void * End, int (*comp) (void*, void*))
 {
 	int dist = std::distance (Begin, End);
 	if (dist == 0)
@@ -84,7 +85,14 @@ void __atdc_sort (void * Begin, void * End, void * comp)
 	__merge (Begin, mid, mid, End, comp);
 }
 
-void atdc_sort (void * Begin, void * End, void * comp = void *())
+int def_less (void* a, void* b)
+{
+	typename void *::value_type A = *a;
+	typename void *::value_type B = *b;
+	return (A < B) + 1;
+}
+
+void atdc_sort (void * Begin, void * End, int (*comp)(void*, void*) = &def_less)
 {
 	__atdc_sort (Begin, End, comp);
 }
